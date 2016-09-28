@@ -1,0 +1,11 @@
+publish('hw_1_2_1.m'); close all;
+publish('hw_1_4_1.m'); close all;
+publish('hw_1_4_2.m'); close all;
+publish('hw_1_5_1.m'); close all;
+publish('hw_1_5_4.m'); close all;
+publish('hw_1_5_5.m'); close all;
+publish('hw_1_5_6.m'); close all;
+publish('hw_1_5_7.m'); close all;
+publish('hw_1_5_8.m'); close all;
+publish('hw_1_5_9.m'); close all;
+publish('hw_1_5_10.m'); close all;
