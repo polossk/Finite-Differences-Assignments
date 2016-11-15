@@ -4,7 +4,7 @@
 % * $v(x, 0) = f(x), x \in [0, 1]$
 % * $v(0, t) = a(t), v(1, t) = b(t), t \geq 0$
 %%%
-% where $f(0) = a(0)$ , and $f(1) = a(0)$
+% where $f(0) = a(0)$ , and $f(1) = b(0)$
 %% Numerical Solution
 %%%
 % Using $f(x) = \sin(2 \pi x)$, $a = b = 0$, and $\nu = 1 / 6$
