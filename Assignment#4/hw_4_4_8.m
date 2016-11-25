@@ -5,10 +5,16 @@
 % * $v(x, 0, t) = v(x, 1, t) = 0, x \in [0, 1], t \geq 0$
 % * $v(x, y, 0) = \sin \pi x \sin 2 \pi y, (x, y) \in [0, 1] \times [0, 1]$
 %%%
-%% Numerical Solution(Correct Scheme)
+%% Numerical Solution(Wrong Mesh Grid)
 %%%
 ts = [0.06, 0.1, 0.9];
 dx = 0.05; dy = 0.05; dt = 0.01;
+[u, X, Y] = solver_4_4_8(dx, dy, dt);
+plotSlice_4_4_3(ts, dt, u, X, Y);
+%% Numerical Solution(Correct Mesh Grid)
+%%%
+ts = [0.06, 0.1, 0.9];
+dx = 0.005; dy = 0.005; dt = 0.001;
 [u, X, Y] = solver_4_4_8(dx, dy, dt);
 plotSlice_4_4_3(ts, dt, u, X, Y);
 
