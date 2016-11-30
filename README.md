@@ -8,6 +8,8 @@
 [Matlab Publish](http://bookcode.polossk.com/Finite-Differences-Assignments/)
 
 ## Note
+- All Problems come from the book _Numerical Partial Differential Equations: Finite Difference Methods(J.W.Thomas)_, 
+- 
 - Using Matlab to understand all the algorithm introduced in this book.
 - All code here generate some figures to comprehend the procedure clearly.
 
