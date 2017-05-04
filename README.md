@@ -2,12 +2,13 @@
 
 ![Platfrom](https://img.shields.io/badge/matlab-2015b-bb92ac.svg)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Release](https://img.shields.io/badge/status-In%20Progress-red.svg)](http://bookcode.polossk.com/Finite-Differences-Assignments/)
+[![Release](https://img.shields.io/badge/status-Complete-green.svg)](http://bookcode.polossk.com/Finite-Differences-Assignments/)
 
 ## Home
 [Matlab Publish](http://bookcode.polossk.com/Finite-Differences-Assignments/)
 
 ## Note
+- All Problems come from the book _Numerical Partial Differential Equations: Finite Difference Methods(J.W.Thomas)_, 
 - Using Matlab to understand all the algorithm introduced in this book.
 - All code here generate some figures to comprehend the procedure clearly.
 
