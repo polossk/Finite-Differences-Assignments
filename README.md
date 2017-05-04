@@ -1,19 +1,22 @@
-# Bookcode of Irasuto de Manabu KiKai Gakusyuu
+# Bookcode of Finite Differences Methods(Assignments)
 
 ![Platfrom](https://img.shields.io/badge/matlab-2015b-bb92ac.svg)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Release](https://img.shields.io/badge/status-Complete-green.svg)](http://bookcode.polossk.com/Finite-Differences-Assignments/)
+[![Release](https://img.shields.io/badge/status-Complete-brightgreen.svg)](http://bookcode.polossk.com/Finite-Differences-Assignments/)
 
 ## Home
 [Matlab Publish](http://bookcode.polossk.com/Finite-Differences-Assignments/)
 
 ## Note
-- All Problems come from the book _Numerical Partial Differential Equations: Finite Difference Methods(J.W.Thomas)_, 
+- All Problems come from the book _Numerical Partial Differential Equations: Finite Difference Methods(J.W.Thomas)_.
 - Using Matlab to understand all the algorithm introduced in this book.
-- All code here generate some figures to comprehend the procedure clearly.
+- All codes here aim to work out the exercises in the book mentioned above.
+- All codes here generate some figures to comprehend the procedure clearly.
 
 ## Copyright
-Use this code whatever you want, under the circumstances of acknowleged the mit license this page below. Star this repository if you like, and it will be very generous of you!
+Use this code whatever you want, under the circumstances of acknowleged the
+mit license this page below. Star this repository if you like, and it will
+be very generous of you!
 
 ## License
 The MIT License (MIT)
