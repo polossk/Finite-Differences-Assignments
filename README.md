@@ -2,7 +2,7 @@
 
 ![Platfrom](https://img.shields.io/badge/matlab-2015b-bb92ac.svg)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-![Release](https://img.shields.io/badge/status-Complete-brightgreen.svg)
+![Status](https://img.shields.io/badge/status-complete-brightgreen.svg)
 
 ## Home
 [Matlab Publish](http://bookcode.polossk.com/Finite-Differences-Assignments/)
