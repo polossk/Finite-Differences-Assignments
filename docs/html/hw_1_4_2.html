@@ -1,0 +1,128 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>HW 1.4.2</title><meta name="generator" content="MATLAB 8.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-09-29"><meta name="DC.source" content="hw_1_4_2.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>HW 1.4.2</h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Neumann-boundary-value Problem</a></li><li><a href="#2">Numerical Solver</a></li><li><a href="#3">Numerical Solution of M = 20 and dt = 0.001</a></li><li><a href="#4">Numerical Solution of M = 40 and dt = 0.0003</a></li></ul></div><h2>Neumann-boundary-value Problem<a name="1"></a></h2><div><ul><li><img src="hw_1_4_2_eq13739371748068747965.png" alt="$v_t = \nu v_{xx}, x \in (0, 1), t &gt; 0$"></li><li><img src="hw_1_4_2_eq06405620194823022386.png" alt="$v(x, 0) = \cos(\pi x / 2), x \in [0, 1]$"></li><li><img src="hw_1_4_2_eq04074536036351455485.png" alt="$v(1, t) = 0, t \geq 0$"></li><li><img src="hw_1_4_2_eq08842082406399673988.png" alt="$v_x(0, t) = 0,  t \geq 0$"></li></ul></div><h2>Numerical Solver<a name="2"></a></h2><pre class="language-matlab">
+<span class="keyword">function</span> [ u, u_exact, X_, T_ ] = solver_1_4_1( M, dt )
+    f_ = @(x)(cos(pi * x / 2));
+    a = 0; b = 0;
+    nu = 1;
+    x = 1; t = 1;
+    dx = 1 / M;
+    T = round(1 / dt);
+    X = round(1 / dx);
+    N = t * T; t_real = t * dt * T;
+    r = nu * dt / dx / dx;
+    x_ = 0 : dx : x;
+    t_ = 0 : dt : t_real;
+    [X_, T_] = meshgrid(x_, t_);
+    u = zeros(size(X_));
+    u(1, :) = f_(x_);
+    u(:, M + 1) = b;
+    <span class="keyword">for</span> jj = 1 : N
+        u(jj + 1, 1) = (1 - 2 * r) * u(jj, 1) + 2 * r * u(jj, 2);
+        <span class="keyword">for</span> kk = 2 : M
+            u(jj + 1, kk) = (1 - 2 * r) * u(jj, kk) <span class="keyword">...</span>
+                + r * (u(jj, kk - 1) + u(jj, kk + 1));
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+    u_exact = cos(pi * X_ / 2) .* exp( (-pi * pi * nu / 4) * T_);
+    figure; mesh(X_, T_, u);
+    xlabel(<span class="string">'x'</span>); ylabel(<span class="string">'t'</span>); zlabel(<span class="string">'u(numerical)'</span>);
+    figure; mesh(X_, T_, u_exact);
+    xlabel(<span class="string">'x'</span>); ylabel(<span class="string">'t'</span>); zlabel(<span class="string">'u(exact)'</span>);
+    delta = u_exact - u;
+    err = max(abs(delta(:)));
+    figure; mesh(X_, T_, u_exact - u);
+    xlabel(<span class="string">'x'</span>); ylabel(<span class="string">'t'</span>); zlabel(<span class="string">'\Deltau'</span>);
+    fprintf(<span class="string">'max error = %f\n'</span>, err);
+<span class="keyword">end</span>
+
+</pre><h2>Numerical Solution of M = 20 and dt = 0.001<a name="3"></a></h2><pre class="codeinput">solver_1_4_1( 20, 0.001 );
+</pre><pre class="codeoutput">max error = 0.000265
+</pre><img vspace="5" hspace="5" src="hw_1_4_2_01.png" alt=""> <img vspace="5" hspace="5" src="hw_1_4_2_02.png" alt=""> <img vspace="5" hspace="5" src="hw_1_4_2_03.png" alt=""> <h2>Numerical Solution of M = 40 and dt = 0.0003<a name="4"></a></h2><pre class="codeinput">solver_1_4_1( 40, 0.0003 );
+</pre><pre class="codeoutput">max error = 0.000089
+</pre><img vspace="5" hspace="5" src="hw_1_4_2_04.png" alt=""> <img vspace="5" hspace="5" src="hw_1_4_2_05.png" alt=""> <img vspace="5" hspace="5" src="hw_1_4_2_06.png" alt=""> <p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2015b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% HW 1.4.2
+%% Neumann-boundary-value Problem
+% * $v_t = \nu v_{xx}, x \in (0, 1), t > 0$
+% * $v(x, 0) = \cos(\pi x / 2), x \in [0, 1]$
+% * $v(1, t) = 0, t \geq 0$
+% * $v_x(0, t) = 0,  t \geq 0$
+%% Numerical Solver
+%
+% <include>solver_1_4_1.m</include>
+%
+
+%% Numerical Solution of M = 20 and dt = 0.001
+solver_1_4_1( 20, 0.001 );
+
+%% Numerical Solution of M = 40 and dt = 0.0003
+solver_1_4_1( 40, 0.0003 );
+##### SOURCE END #####
+--></body></html>

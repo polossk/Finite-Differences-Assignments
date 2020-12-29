@@ -1,0 +1,291 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>HW 4.4.10</title><meta name="generator" content="MATLAB 8.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-11-25"><meta name="DC.source" content="hw_4_4_10_3D.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>HW 4.4.10</h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Initial-boundary-value Problem</a></li><li><a href="#3">Difference Scheme</a></li><li><a href="#6">Numerical Solution</a></li><li><a href="#9">Code: Solver of Functionn</a></li><li><a href="#12">Code: Value of Slices</a></li></ul></div><h2>Initial-boundary-value Problem<a name="1"></a></h2><div><ul><li><img src="hw_4_4_10_3D_eq13982059477916038769.png" alt="$v_t = \nu (v_{xx} + v_{yy} + v_{zz}) + F(x, y, z, t), (x, y, z) \in (0, 1) \times (0, 1) \times (0, 1), t &gt; 0$"></li><li><img src="hw_4_4_10_3D_eq04804949603211419360.png" alt="$v(0, y, z, t) = v(1, y, z, t) = 0, y, z \in [0, 1] \times [0, 1], t \geq 0$"></li><li><img src="hw_4_4_10_3D_eq16574675266194784173.png" alt="$v(x, 0, z, t) = v(x, 1, z, t) = 0, x, z \in [0, 1] \times [0, 1], t \geq 0$"></li><li><img src="hw_4_4_10_3D_eq01303438082663177746.png" alt="$v(x, y, 0, t) = v(x, y, 1, t) = 0, x, y \in [0, 1] \times [0, 1], t \geq 0$"></li><li><img src="hw_4_4_10_3D_eq14112441387344859284.png" alt="$v(x, y, z, 0) = 0, (x, y, z) \in [0, 1] \times [0, 1]$"></li><li><img src="hw_4_4_10_3D_eq11083861353977194996.png" alt="$F(x, y, t) = \sin 5 \pi t \sin 2 \pi x \sin \pi y \sin \pi z, (x, y, z) \in [0, 1] \times [0, 1] \times [0, 1]$"></li></ul></div><h2>Difference Scheme<a name="3"></a></h2><p>Let</p><div><ul><li><img src="hw_4_4_10_3D_eq07284648691367078785.png" alt="$I^{-}_x = I - \frac{r_x}{3}\partial_x^2, I^{+}_x = \frac{1}{2}I + \frac{r_x}{3}\partial_x^2$"></li><li><img src="hw_4_4_10_3D_eq06685506311414155739.png" alt="$I^{-}_y = I - \frac{r_y}{3}\partial_y^2, I^{+}_y = \frac{1}{2}I + \frac{r_y}{3}\partial_y^2$"></li><li><img src="hw_4_4_10_3D_eq15483714875770379541.png" alt="$I^{-}_z = I - \frac{r_z}{3}\partial_z^2, I^{+}_z = \frac{1}{2}I + \frac{r_z}{3}\partial_z^2$"></li></ul></div><p>So that</p><div><ul><li><img src="hw_4_4_10_3D_eq04279536536110271869.png" alt="$I^{-}_x u^{n+\frac{1}{3}} = I^{+}_y u^{n} + I^{+}_z u^{n} + \frac{\Delta t}{3} F^{n}$"></li><li><img src="hw_4_4_10_3D_eq10653243904333657110.png" alt="$I^{-}_y u^{n+\frac{2}{3}} = I^{+}_x u^{n+\frac{1}{3}} + I^{+}_z u^{n+\frac{1}{3}} + \frac{\Delta t}{3} F^{n+\frac{1}{2}}$"></li><li><img src="hw_4_4_10_3D_eq00327298065971437846.png" alt="$I^{-}_z u^{n+1} = I^{+}_x u^{n+\frac{2}{3}} + I^{+}_y u^{n+\frac{2}{3}} + \frac{\Delta t}{3} F^{n+1}$"></li></ul></div><p>Where <img src="hw_4_4_10_3D_eq17227197122571553083.png" alt="$u^{n} = (u)_{i, j, k}|_{t = n}$"></p><p>Conditionally stable and order <img src="hw_4_4_10_3D_eq15452262511609342152.png" alt="$O(\Delta t) + O(\Delta x^2) + O(\Delta y^2) + O(\Delta z^2)$"></p><h2>Numerical Solution<a name="6"></a></h2><pre class="codeinput">ts = [0.06, 0.1, 0.2, 0.4, 0.8];
+dx = 0.05; dy = 0.05; dz = 0.05; dt = 0.001;
+[u, X, Y, Z] = solver_4_4_10_3D(dx, dy, dz, dt);
+plotSlice_4_4_10_3D(ts, dt, u, X, Y, dz);
+</pre><img vspace="5" hspace="5" src="hw_4_4_10_3D_01.png" alt=""> <img vspace="5" hspace="5" src="hw_4_4_10_3D_02.png" alt=""> <img vspace="5" hspace="5" src="hw_4_4_10_3D_03.png" alt=""> <img vspace="5" hspace="5" src="hw_4_4_10_3D_04.png" alt=""> <img vspace="5" hspace="5" src="hw_4_4_10_3D_05.png" alt=""> <h2>Code: Solver of Functionn<a name="9"></a></h2><pre class="language-matlab"><span class="keyword">function</span> [u, X_, Y_, Z_] = solver_4_4_10_3D( dx, dy, dz, dt )
+    f_ = @(X, Y, Z, t)(sin(2 * pi * X) .* sin(pi * Y) .* sin(pi * Z) .* sin(5 * pi * t));
+    nu = 1;
+</pre><pre>     X = round(1 / dx);
+     Y = round(1 / dy);
+     Z = round(1 / dz);
+     T = round(1 / dt);
+     x = 1; y = 1; z = 1; t = 1;
+     Mx = x * X; My = y * Y; Mz = z * Z; N = t * T;</pre><pre>     prx = nu * dt / dx / dx / 3;
+     pry = nu * dt / dy / dy / 3;
+     prz = nu * dt / dz / dz / 3;</pre><pre>     x_ = 0 : dx : x;
+     y_ = 0 : dy : y;
+     z_ = 0 : dz : z;
+     t_ = 0 : dt : t;
+     [X_, Y_, Z_] = meshgrid(x_, y_, z_);
+     u = zeros([size(X_), N + 1]);</pre><pre>     u_t = zeros(size(u(2 : end - 1, 2 : end - 1, 2 : end - 1, 1)));
+     u_1 = zeros(size(u_t));
+     u_2 = zeros(size(u_t));</pre><pre>     x__ = x_(2 : end - 1);
+     y__ = y_(2 : end - 1);
+     z__ = z_(2 : end - 1);
+     [X__, Y__, Z__] = meshgrid(x__, y__, z__);</pre><pre>     A_0 = pry * speye(length(y__));
+     A_1 = pry * ones(1, length(y__) - 1);
+     A = -2 * A_0 + sparse(diag(A_1, 1)) + sparse(diag(A_1, -1));</pre><pre>     B_0 = prx * speye(length(x__));
+     B_1 = prx * ones(1, length(x__) - 1);
+     B = -2 * B_0 + sparse(diag(B_1, 1)) + sparse(diag(B_1, -1));</pre><pre>     C_0 = prz * speye(length(x__));
+     C_1 = prz * ones(1, length(x__) - 1);
+     C = -2 * C_0 + sparse(diag(C_1, 1)) + sparse(diag(C_1, -1));</pre><pre>     coef_Ix = speye(length(x__));
+     coef_Iy = speye(length(y__));
+     coef_Iz = speye(length(z__));</pre><pre>     coef_prdx2 = 0.5 * coef_Ix + B;
+     coef_mrdx2 = coef_Ix - B;
+     coef_prdy2 = 0.5 * coef_Iy + A;
+     coef_mrdy2 = coef_Iy - A;
+     coef_prdz2 = 0.5 * coef_Iz + C;
+     coef_mrdz2 = coef_Iz - C;
+     coef_inv_mrdx2 = inv(coef_mrdx2);
+     coef_inv_mrdy2 = inv(coef_mrdy2);
+     coef_inv_mrdz2 = inv(coef_mrdz2);</pre><pre>     Lx = length(x__); Ly = length(y__); Lz = length(z__);</pre><pre>     oper_X = @(IX, U) permute( reshape( ...
+         (reshape(permute(U, [2, 1, 3]), Ly, [])' * IX)', [Ly, Lx, Lz]), [2, 1, 3] );</pre><pre>     oper_Y = @(IY, U) ...
+         reshape(IY * reshape(U, Lx, []), [Lx, Ly, Lz]);</pre><pre>     oper_Z = @(IZ, U) permute( reshape( ...
+         IZ * reshape(permute(U, [3, 2, 1]), Lz, []), [Lz, Ly, Lx]), [3, 2, 1]);</pre><pre>     for kk = 1 : N
+         u__ = u(:, :, :, kk);
+         u_0 = u__(2 : end - 1, 2 : end - 1, 2 : end - 1);
+         F_0 = dt / 3 * f_(X__, Y__, Z__, t_(kk));
+         F_h = dt / 3 * f_(X__, Y__, Z__, 0.5 * (t_(kk) + t_(kk + 1)));
+         F_1 = dt / 3 * f_(X__, Y__, Z__, t_(kk + 1));
+         u_1 = oper_Y(coef_prdy2, u_0) + oper_Z(coef_prdz2, u_0) + F_0;
+         u_1 = oper_X(coef_inv_mrdx2, u_1);
+         u_2 = oper_X(coef_prdx2, u_1) + oper_Z(coef_prdz2, u_1) + F_h;
+         u_2 = oper_X(coef_inv_mrdy2, u_2);
+         u_3 = oper_X(coef_prdx2, u_2) + oper_Y(coef_prdy2, u_2) + F_1;
+         u_3 = oper_X(coef_inv_mrdz2, u_3);
+         u(2 : end - 1, 2 : end - 1, 2 : end - 1, kk + 1) = u_3;
+     end
+ end</pre><h2>Code: Value of Slices<a name="12"></a></h2><pre class="language-matlab"><span class="keyword">function</span> plotSlice_4_4_3( t_slices, dt, u, X_, Y_, dz )
+    t_slices_id = round(t_slices / dt) + 1;
+    z_slices = [0.1, 0.35, 0.65, 0.9];
+    idx = round(z_slices / dz) + 1;
+    <span class="keyword">for</span> ii = 1 : length(t_slices)
+        figure; hold <span class="string">on</span>;
+        suptitle(sprintf(<span class="string">'t = %.3f'</span>, t_slices(ii)));
+        <span class="keyword">for</span> jj = 1 : 4
+            subplot(2, 2, jj); hold <span class="string">on</span>;
+            [~, h] = contourf(X_(:, :, idx(jj)), Y_(:, :, idx(jj)), <span class="keyword">...</span>
+                u(:, :, idx(jj), t_slices_id(ii)));
+            h.ShowText = <span class="string">'on'</span>;
+            text(-0.019, 0.9, sprintf(<span class="string">'z = %.2f'</span>, z_slices(jj)));
+        <span class="keyword">end</span>
+        hold <span class="string">off</span>;
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2015b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% HW 4.4.10
+%% Initial-boundary-value Problem
+% * $v_t = \nu (v_{xx} + v_{yy} + v_{zz}) + F(x, y, z, t), (x, y, z) \in (0, 1) \times (0, 1) \times (0, 1), t > 0$
+% * $v(0, y, z, t) = v(1, y, z, t) = 0, y, z \in [0, 1] \times [0, 1], t \geq 0$
+% * $v(x, 0, z, t) = v(x, 1, z, t) = 0, x, z \in [0, 1] \times [0, 1], t \geq 0$
+% * $v(x, y, 0, t) = v(x, y, 1, t) = 0, x, y \in [0, 1] \times [0, 1], t \geq 0$
+% * $v(x, y, z, 0) = 0, (x, y, z) \in [0, 1] \times [0, 1]$
+% * $F(x, y, t) = \sin 5 \pi t \sin 2 \pi x \sin \pi y \sin \pi z, (x, y, z) \in [0, 1] \times [0, 1] \times [0, 1]$
+%%%
+%% Difference Scheme
+%%%
+% Let
+% 
+% * $I^{-}_x = I - \frac{r_x}{3}\partial_x^2, I^{+}_x = \frac{1}{2}I + \frac{r_x}{3}\partial_x^2$
+% * $I^{-}_y = I - \frac{r_y}{3}\partial_y^2, I^{+}_y = \frac{1}{2}I + \frac{r_y}{3}\partial_y^2$
+% * $I^{-}_z = I - \frac{r_z}{3}\partial_z^2, I^{+}_z = \frac{1}{2}I + \frac{r_z}{3}\partial_z^2$
+% 
+% So that
+% 
+% * $I^{-}_x u^{n+\frac{1}{3}} = I^{+}_y u^{n} + I^{+}_z u^{n} + \frac{\Delta t}{3} F^{n}$
+% * $I^{-}_y u^{n+\frac{2}{3}} = I^{+}_x u^{n+\frac{1}{3}} + I^{+}_z u^{n+\frac{1}{3}} + \frac{\Delta t}{3} F^{n+\frac{1}{2}}$
+% * $I^{-}_z u^{n+1} = I^{+}_x u^{n+\frac{2}{3}} + I^{+}_y u^{n+\frac{2}{3}} + \frac{\Delta t}{3} F^{n+1}$
+% 
+% Where $u^{n} = (u)_{i, j, k}|_{t = n}$
+% 
+% Conditionally stable and order $O(\Delta t) + O(\Delta x^2) + O(\Delta y^2) + O(\Delta z^2)$
+%%%
+%% Numerical Solution
+%%%
+ts = [0.06, 0.1, 0.2, 0.4, 0.8];
+dx = 0.05; dy = 0.05; dz = 0.05; dt = 0.001;
+[u, X, Y, Z] = solver_4_4_10_3D(dx, dy, dz, dt);
+plotSlice_4_4_10_3D(ts, dt, u, X, Y, dz);
+%%%
+%% Code: Solver of Functionn
+%%%
+%
+%   function [u, X_, Y_, Z_] = solver_4_4_10_3D( dx, dy, dz, dt )
+%       f_ = @(X, Y, Z, t)(sin(2 * pi * X) .* sin(pi * Y) .* sin(pi * Z) .* sin(5 * pi * t));
+%       nu = 1;
+%   
+%       X = round(1 / dx);
+%       Y = round(1 / dy);
+%       Z = round(1 / dz);
+%       T = round(1 / dt);
+%       x = 1; y = 1; z = 1; t = 1;
+%       Mx = x * X; My = y * Y; Mz = z * Z; N = t * T;
+%   
+%       prx = nu * dt / dx / dx / 3;
+%       pry = nu * dt / dy / dy / 3;
+%       prz = nu * dt / dz / dz / 3;
+%   
+%       x_ = 0 : dx : x;
+%       y_ = 0 : dy : y;
+%       z_ = 0 : dz : z;
+%       t_ = 0 : dt : t;
+%       [X_, Y_, Z_] = meshgrid(x_, y_, z_);
+%       u = zeros([size(X_), N + 1]);
+%   
+%       u_t = zeros(size(u(2 : end - 1, 2 : end - 1, 2 : end - 1, 1)));
+%       u_1 = zeros(size(u_t));
+%       u_2 = zeros(size(u_t));
+%   
+%       x__ = x_(2 : end - 1);
+%       y__ = y_(2 : end - 1);
+%       z__ = z_(2 : end - 1);
+%       [X__, Y__, Z__] = meshgrid(x__, y__, z__);
+%   
+%       A_0 = pry * speye(length(y__));
+%       A_1 = pry * ones(1, length(y__) - 1);
+%       A = -2 * A_0 + sparse(diag(A_1, 1)) + sparse(diag(A_1, -1));
+%   
+%       B_0 = prx * speye(length(x__));
+%       B_1 = prx * ones(1, length(x__) - 1);
+%       B = -2 * B_0 + sparse(diag(B_1, 1)) + sparse(diag(B_1, -1));
+%   
+%       C_0 = prz * speye(length(x__));
+%       C_1 = prz * ones(1, length(x__) - 1);
+%       C = -2 * C_0 + sparse(diag(C_1, 1)) + sparse(diag(C_1, -1));
+%   
+%       coef_Ix = speye(length(x__));
+%       coef_Iy = speye(length(y__));
+%       coef_Iz = speye(length(z__));
+%   
+%       coef_prdx2 = 0.5 * coef_Ix + B;
+%       coef_mrdx2 = coef_Ix - B;
+%       coef_prdy2 = 0.5 * coef_Iy + A;
+%       coef_mrdy2 = coef_Iy - A;
+%       coef_prdz2 = 0.5 * coef_Iz + C;
+%       coef_mrdz2 = coef_Iz - C;
+%       coef_inv_mrdx2 = inv(coef_mrdx2);
+%       coef_inv_mrdy2 = inv(coef_mrdy2);
+%       coef_inv_mrdz2 = inv(coef_mrdz2);
+%   
+%       Lx = length(x__); Ly = length(y__); Lz = length(z__);
+%   
+%       oper_X = @(IX, U) permute( reshape( ...
+%           (reshape(permute(U, [2, 1, 3]), Ly, [])' * IX)', [Ly, Lx, Lz]), [2, 1, 3] );
+%   
+%       oper_Y = @(IY, U) ...
+%           reshape(IY * reshape(U, Lx, []), [Lx, Ly, Lz]);
+%   
+%       oper_Z = @(IZ, U) permute( reshape( ...
+%           IZ * reshape(permute(U, [3, 2, 1]), Lz, []), [Lz, Ly, Lx]), [3, 2, 1]);
+%   
+%       for kk = 1 : N
+%           u__ = u(:, :, :, kk);
+%           u_0 = u__(2 : end - 1, 2 : end - 1, 2 : end - 1);
+%           F_0 = dt / 3 * f_(X__, Y__, Z__, t_(kk));
+%           F_h = dt / 3 * f_(X__, Y__, Z__, 0.5 * (t_(kk) + t_(kk + 1)));
+%           F_1 = dt / 3 * f_(X__, Y__, Z__, t_(kk + 1));
+%           u_1 = oper_Y(coef_prdy2, u_0) + oper_Z(coef_prdz2, u_0) + F_0;
+%           u_1 = oper_X(coef_inv_mrdx2, u_1);
+%           u_2 = oper_X(coef_prdx2, u_1) + oper_Z(coef_prdz2, u_1) + F_h;
+%           u_2 = oper_X(coef_inv_mrdy2, u_2);
+%           u_3 = oper_X(coef_prdx2, u_2) + oper_Y(coef_prdy2, u_2) + F_1;
+%           u_3 = oper_X(coef_inv_mrdz2, u_3);
+%           u(2 : end - 1, 2 : end - 1, 2 : end - 1, kk + 1) = u_3;
+%       end
+%   end
+%   
+%%%
+%% Code: Value of Slices
+%%%
+%   
+%   function plotSlice_4_4_3( t_slices, dt, u, X_, Y_, dz )
+%       t_slices_id = round(t_slices / dt) + 1;
+%       z_slices = [0.1, 0.35, 0.65, 0.9];
+%       idx = round(z_slices / dz) + 1;
+%       for ii = 1 : length(t_slices)
+%           figure; hold on;
+%           suptitle(sprintf('t = %.3f', t_slices(ii)));
+%           for jj = 1 : 4
+%               subplot(2, 2, jj); hold on;
+%               [~, h] = contourf(X_(:, :, idx(jj)), Y_(:, :, idx(jj)), ...
+%                   u(:, :, idx(jj), t_slices_id(ii)));
+%               h.ShowText = 'on';
+%               text(-0.019, 0.9, sprintf('z = %.2f', z_slices(jj)));
+%           end
+%           hold off;
+%       end
+%   end
+%
+%%%
+
+##### SOURCE END #####
+--></body></html>

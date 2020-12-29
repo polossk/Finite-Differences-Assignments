@@ -1,0 +1,184 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>HW 4.2.3</title><meta name="generator" content="MATLAB 8.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-11-23"><meta name="DC.source" content="hw_4_2_3.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>HW 4.2.3</h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Initial-boundary-value Problem</a></li><li><a href="#3">Numerical Solution</a></li><li><a href="#5">Code: Solver of Functionn</a></li><li><a href="#8">Code: Value of Slices</a></li></ul></div><h2>Initial-boundary-value Problem<a name="1"></a></h2><div><ul><li><img src="hw_4_2_3_eq10347279170560968855.png" alt="$v_t = \nu (v_{xx} + v_{yy}) + F(x, y, t), (x, y) \in R, t &gt; 0$"></li><li><img src="hw_4_2_3_eq15582933102377287060.png" alt="$v(x, y, t) = g(x, y, t), (x, y) \in \partial R, t &gt; 0$"></li><li><img src="hw_4_2_3_eq05050064958550240495.png" alt="$v(x, y, 0) = f(x, y), (x, y) \in \bar{R}$"> where</li><li><img src="hw_4_2_3_eq17691774203204170619.png" alt="$R = (0, 1) \times (0, 1)$"></li><li><img src="hw_4_2_3_eq16257454089601734164.png" alt="$F(x, y) = \sin t \sin 2 \pi x \sin 4 \pi y$"></li><li><img src="hw_4_2_3_eq01457711293746616133.png" alt="$g = 0, f = 0, \nu = 0.5$"></li></ul></div><h2>Numerical Solution<a name="3"></a></h2><p>ts = [1.5, 4.5, 6.25];</p><pre class="codeinput">ts = [1.5, 4.5, 6.25];
+<span class="comment">% dx = 0.05; dy = 0.05; dt = 0.0005;</span>
+dx = 0.05; dy = 0.05; dt = 0.0005;
+[u, X, Y] = solver_4_2_3(dx, dy, dt, ts);
+</pre><img vspace="5" hspace="5" src="hw_4_2_3_01.png" alt=""> <img vspace="5" hspace="5" src="hw_4_2_3_02.png" alt=""> <img vspace="5" hspace="5" src="hw_4_2_3_03.png" alt=""> <h2>Code: Solver of Functionn<a name="5"></a></h2><pre class="language-matlab"><span class="keyword">function</span> [u, X_, Y_] = solver_4_2_3( dx, dy, dt, slices )
+    f_ = @(X, Y)( zeros(size(X)) );
+    F_ = @(X, Y, t)( sin(t) .* sin(2 * pi * X) .* sin(4 * pi * Y) );
+    nu = 0.5;
+    slices_id = round(slices / dt);
+</pre><pre>     X = round(1 / dx);
+     Y = round(1 / dy);
+     x = 1; y = 1;
+     Mx = x * X; My = y * Y;</pre><pre>     rx = nu * dt / dx / dx;
+     ry = nu * dt / dy / dy;</pre><pre>     x_ = 0 : dx : x;
+     y_ = 0 : dy : y;
+     [X_, Y_] = meshgrid(x_, y_);
+     u_fin = f_(X_, Y_);</pre><pre>     x__ = x_(2 : end - 1); y__ = y_(2 : end - 1);
+     [X__, Y__] = meshgrid(x__, y__);
+     u = zeros(size(X__));
+     u_t = zeros(size(X__));</pre><pre>     A_0 = ones(1, length(y__));
+     A_1 = ones(1, length(y__) - 1);
+     A = -2 * diag(A_0) + diag(A_1, 1) + diag(A_1, -1);</pre><pre>     B_0 = ones(1, length(x__));
+     B_1 = ones(1, length(x__) - 1);
+     B = -2 * diag(B_0) + diag(B_1, 1) + diag(B_1, -1);</pre><pre>     for id = 1 : max(slices_id)
+         u_t = u + A * u + u * B + F_(X__, Y__, id * dt);
+         if (any(id == slices_id))
+             u_fin(2 : end - 1, 2 : end - 1) = u_t;
+             plotSlice_4_2_3(u_fin, X_, Y_, dt, id);
+         end
+         u = u_t;
+     end
+ end</pre><h2>Code: Value of Slices<a name="8"></a></h2><pre class="language-matlab"><span class="keyword">function</span> plotSlice_4_2_3(u, X_, Y_, dt, id)
+    figure; hold <span class="string">on</span>;
+    title(sprintf(<span class="string">'t = %.2f'</span>, id * dt));
+    mesh(X_, Y_, u);
+    view(3); xlabel(<span class="string">'x'</span>); ylabel(<span class="string">'y'</span>); zlabel(<span class="string">'u(numerical)'</span>);
+<span class="keyword">end</span>
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2015b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% HW 4.2.3
+%% Initial-boundary-value Problem
+% * $v_t = \nu (v_{xx} + v_{yy}) + F(x, y, t), (x, y) \in R, t > 0$
+% * $v(x, y, t) = g(x, y, t), (x, y) \in \partial R, t > 0$
+% * $v(x, y, 0) = f(x, y), (x, y) \in \bar{R}$
+% where
+% * $R = (0, 1) \times (0, 1)$
+% * $F(x, y) = \sin t \sin 2 \pi x \sin 4 \pi y$
+% * $g = 0, f = 0, \nu = 0.5$
+%%%
+%% Numerical Solution
+%%%
+% ts = [1.5, 4.5, 6.25];
+ts = [1.5, 4.5, 6.25];
+% dx = 0.05; dy = 0.05; dt = 0.0005;
+dx = 0.05; dy = 0.05; dt = 0.0005;
+[u, X, Y] = solver_4_2_3(dx, dy, dt, ts);
+%% Code: Solver of Functionn
+%%%
+%
+%   function [u, X_, Y_] = solver_4_2_3( dx, dy, dt, slices )
+%       f_ = @(X, Y)( zeros(size(X)) );
+%       F_ = @(X, Y, t)( sin(t) .* sin(2 * pi * X) .* sin(4 * pi * Y) );
+%       nu = 0.5;
+%       slices_id = round(slices / dt);
+%   
+%       X = round(1 / dx);
+%       Y = round(1 / dy);
+%       x = 1; y = 1;
+%       Mx = x * X; My = y * Y;
+%       
+%       rx = nu * dt / dx / dx;
+%       ry = nu * dt / dy / dy;
+%   
+%       x_ = 0 : dx : x;
+%       y_ = 0 : dy : y;
+%       [X_, Y_] = meshgrid(x_, y_);
+%       u_fin = f_(X_, Y_);
+%   
+%       x__ = x_(2 : end - 1); y__ = y_(2 : end - 1);
+%       [X__, Y__] = meshgrid(x__, y__);
+%       u = zeros(size(X__));
+%       u_t = zeros(size(X__));
+%   
+%       A_0 = ones(1, length(y__));
+%       A_1 = ones(1, length(y__) - 1);
+%       A = -2 * diag(A_0) + diag(A_1, 1) + diag(A_1, -1);
+%   
+%       B_0 = ones(1, length(x__));
+%       B_1 = ones(1, length(x__) - 1);
+%       B = -2 * diag(B_0) + diag(B_1, 1) + diag(B_1, -1);
+%   
+%       for id = 1 : max(slices_id)
+%           u_t = u + A * u + u * B + F_(X__, Y__, id * dt);
+%           if (any(id == slices_id))
+%               u_fin(2 : end - 1, 2 : end - 1) = u_t;
+%               plotSlice_4_2_3(u_fin, X_, Y_, dt, id);
+%           end
+%           u = u_t;
+%       end
+%   end
+%
+%%%
+%% Code: Value of Slices
+%%%
+%   
+%   function plotSlice_4_2_3(u, X_, Y_, dt, id)
+%       figure; hold on;
+%       title(sprintf('t = %.2f', id * dt));
+%       mesh(X_, Y_, u);
+%       view(3); xlabel('x'); ylabel('y'); zlabel('u(numerical)');
+%   end
+%
+%%%
+
+##### SOURCE END #####
+--></body></html>

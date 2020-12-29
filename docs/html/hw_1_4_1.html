@@ -1,0 +1,221 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>HW 1.4.1</title><meta name="generator" content="MATLAB 8.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-09-29"><meta name="DC.source" content="hw_1_4_1.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>HW 1.4.1</h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Neumann-boundary-value Problem</a></li><li><a href="#2">Numerical Solution</a></li><li><a href="#10">Analytical Solution</a></li><li><a href="#15">Error</a></li><li><a href="#16">Value of Slices</a></li></ul></div><h2>Neumann-boundary-value Problem<a name="1"></a></h2><div><ul><li><img src="hw_1_4_1_eq13739371748068747965.png" alt="$v_t = \nu v_{xx}, x \in (0, 1), t &gt; 0$"></li><li><img src="hw_1_4_1_eq06405620194823022386.png" alt="$v(x, 0) = \cos(\pi x / 2), x \in [0, 1]$"></li><li><img src="hw_1_4_1_eq04074536036351455485.png" alt="$v(1, t) = 0, t \geq 0$"></li><li><img src="hw_1_4_1_eq08842082406399673988.png" alt="$v_x(0, t) = 0,  t \geq 0$"></li></ul></div><h2>Numerical Solution<a name="2"></a></h2><p>Using <img src="hw_1_4_1_eq00880847555018986845.png" alt="$\nu = 1$"></p><pre class="codeinput">f_ = @(x)(cos(pi * x / 2));
+a = 0; b = 0;
+nu = 1;
+</pre><p>In domain <img src="hw_1_4_1_eq12464155907289493271.png" alt="$[0, 1] \times [0, 1]$">, let <img src="hw_1_4_1_eq03785239927454022507.png" alt="$N = 250$">, <img src="hw_1_4_1_eq06285030742903215919.png" alt="$M = 10$">, a.k.a <img src="hw_1_4_1_eq11192987036553589754.png" alt="$\Delta t = 0.004$">, <img src="hw_1_4_1_eq05559622268376871328.png" alt="$\Delta x = 0.1$"></p><pre class="codeinput">dx = 0.1; dt = 0.004;
+T = round(1 / dt);
+X = round(1 / dx);
+x = 1; t = 1;
+M = x * X; N = t * T;
+</pre><p>Let <img src="hw_1_4_1_eq06762107967089031058.png" alt="$r = \nu \frac{\Delta t}{\Delta x^2}$"></p><pre class="codeinput">r = nu * dt / dx / dx;
+</pre><p>Setting domain and boundary value</p><pre class="codeinput">x_ = 0 : dx : 1;
+t_ = 0 : dt : t;
+[X_, T_] = meshgrid(x_, t_);
+f = f_(x_);
+u = zeros(size(X_));
+u(1, :) = f;
+u(:, M + 1) = b;
+</pre><p>It is acknowledged that using central difference method to solve this eqution, which indicating the solution like</p><p><img src="hw_1_4_1_eq02069473598059550118.png" alt="$$u^{n+1}_k = u^n_k + r(u^n_{k + 1} - 2 u^n_k + u^n_{k - 1})$$"></p><p>where notation <img src="hw_1_4_1_eq03343659375367427126.png" alt="$u^n_k$"> indicating the numerical solution of <img src="hw_1_4_1_eq03158747792916826732.png" alt="$v$"> at the point <img src="hw_1_4_1_eq17893308906364526827.png" alt="$(k\Delta x, n\Delta t)$"></p><pre class="codeinput"><span class="keyword">for</span> jj = 1 : N
+    u(jj + 1, 1) = (1 - 2 * r) * u(jj, 1) + 2 * r * u(jj, 2);
+    <span class="keyword">for</span> kk = 2 : M
+        u(jj + 1, kk) = (1 - 2 * r) * u(jj, kk) <span class="keyword">...</span>
+            + r * (u(jj, kk - 1) + u(jj, kk + 1));
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+figure; mesh(X_, T_, u);
+xlabel(<span class="string">'x'</span>); ylabel(<span class="string">'t'</span>); zlabel(<span class="string">'u(numerical)'</span>);
+</pre><img vspace="5" hspace="5" src="hw_1_4_1_01.png" alt=""> <h2>Analytical Solution<a name="10"></a></h2><p>Notice that the analytical solutions following the form like</p><p><img src="hw_1_4_1_eq11212481554450368657.png" alt="$$v = \alpha \cos (\omega x + \phi) \exp \{ -(\beta t + \theta) \}$$"></p><p>By using the method of undetermined coefficients, the solution is as follows</p><p><img src="hw_1_4_1_eq12927661883688099297.png" alt="$$ v = \cos (\frac{\pi}{2} x) \exp \{ -\frac{\pi^2}{4} \nu t \}$$"></p><pre class="codeinput">u_exact = cos(pi * X_ / 2) .* exp( (-pi * pi * nu / 4) * T_);
+figure; mesh(X_, T_, u_exact);
+xlabel(<span class="string">'x'</span>); ylabel(<span class="string">'t'</span>); zlabel(<span class="string">'u(exact)'</span>);
+</pre><img vspace="5" hspace="5" src="hw_1_4_1_02.png" alt=""> <h2>Error<a name="15"></a></h2><pre class="codeinput">delta = u_exact - u;
+err = max(abs(delta(:)));
+figure; mesh(X_, T_, u_exact - u);
+xlabel(<span class="string">'x'</span>); ylabel(<span class="string">'t'</span>); zlabel(<span class="string">'\Deltau'</span>);
+fprintf(<span class="string">'max error = %f\n'</span>, err);
+</pre><pre class="codeoutput">max error = 0.001063
+</pre><img vspace="5" hspace="5" src="hw_1_4_1_03.png" alt=""> <h2>Value of Slices<a name="16"></a></h2><pre class="language-matlab"><span class="keyword">function</span> plotSlice( t_slice, dt, u, u_exact, x_ )
+    <span class="keyword">global</span> u u_exact x_
+    t_slice_id = round(t_slice / dt) + 1;
+    u_slice_num = u(t_slice_id, :);
+    u_slice_num = u_slice_num(:);
+    u_slice_ext = u_exact(t_slice_id, :);
+    u_slice_ext = u_slice_ext(:);
+    figure; hold <span class="string">on</span>;
+    plot(x_, u_slice_num, <span class="string">'r-'</span>, x_, u_slice_ext, <span class="string">'g-'</span>);
+    legend(<span class="string">'numerical'</span>, <span class="string">'analytical'</span>);
+    xlabel(<span class="string">'x'</span>); ylabel(<span class="string">'u'</span>);
+    u_slice_err = max(abs(u_slice_num  - u_slice_ext));
+    fprintf(<span class="string">'when t = %.2f, max error = %f\n'</span>, t_slice, u_slice_err);
+<span class="keyword">end</span>
+</pre><p><img src="hw_1_4_1_eq11521109785660710224.png" alt="$t = 0.06$"></p><pre class="codeinput">plotSlice( 0.06, dt, u, u_exact, x_ );
+</pre><p><img src="hw_1_4_1_eq13840826427563840767.png" alt="$t = 0.1$"></p><pre class="codeinput">plotSlice( 0.1, dt, u, u_exact, x_ );
+</pre><p><img src="hw_1_4_1_eq17954919990050841635.png" alt="$t = 0.9$"></p><pre class="codeinput">plotSlice( 0.9, dt, u, u_exact, x_ );
+</pre><pre class="codeoutput">when t = 0.06, max error = 0.000369
+when t = 0.10, max error = 0.000557
+when t = 0.90, max error = 0.000695
+</pre><img vspace="5" hspace="5" src="hw_1_4_1_04.png" alt=""> <img vspace="5" hspace="5" src="hw_1_4_1_05.png" alt=""> <img vspace="5" hspace="5" src="hw_1_4_1_06.png" alt=""> <p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2015b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% HW 1.4.1
+%% Neumann-boundary-value Problem
+% * $v_t = \nu v_{xx}, x \in (0, 1), t > 0$
+% * $v(x, 0) = \cos(\pi x / 2), x \in [0, 1]$
+% * $v(1, t) = 0, t \geq 0$
+% * $v_x(0, t) = 0,  t \geq 0$
+%% Numerical Solution
+%%%
+% Using $\nu = 1$
+f_ = @(x)(cos(pi * x / 2));
+a = 0; b = 0;
+nu = 1;
+%%%
+% In domain $[0, 1] \times [0, 1]$, let $N = 250$, $M = 10$,
+% a.k.a $\Delta t = 0.004$, $\Delta x = 0.1$
+dx = 0.1; dt = 0.004;
+T = round(1 / dt);
+X = round(1 / dx);
+x = 1; t = 1;
+M = x * X; N = t * T;
+%%%
+% Let $r = \nu \frac{\Delta t}{\Delta x^2}$
+r = nu * dt / dx / dx;
+%%%
+% Setting domain and boundary value
+x_ = 0 : dx : 1;
+t_ = 0 : dt : t;
+[X_, T_] = meshgrid(x_, t_);
+f = f_(x_);
+u = zeros(size(X_));
+u(1, :) = f;
+u(:, M + 1) = b;
+%%%
+% It is acknowledged that using central difference method to solve this
+% eqution, which indicating the solution like
+%%%
+% $$u^{n+1}_k = u^n_k + r(u^n_{k + 1} - 2 u^n_k + u^n_{k - 1})$$
+%%%
+% where notation $u^n_k$ indicating the numerical solution of $v$ at the
+% point $(k\Delta x, n\Delta t)$
+for jj = 1 : N
+    u(jj + 1, 1) = (1 - 2 * r) * u(jj, 1) + 2 * r * u(jj, 2);
+    for kk = 2 : M
+        u(jj + 1, kk) = (1 - 2 * r) * u(jj, kk) ...
+            + r * (u(jj, kk - 1) + u(jj, kk + 1));
+    end
+end
+figure; mesh(X_, T_, u);
+xlabel('x'); ylabel('t'); zlabel('u(numerical)');
+%% Analytical Solution
+%%%
+% Notice that the analytical solutions following the form like
+%%%
+% $$v = \alpha \cos (\omega x + \phi) \exp \{ -(\beta t + \theta) \}$$
+%%%
+% By using the method of undetermined coefficients, the solution is as
+% follows
+%%%
+% $$ v = \cos (\frac{\pi}{2} x) \exp \{ -\frac{\pi^2}{4} \nu t \}$$
+u_exact = cos(pi * X_ / 2) .* exp( (-pi * pi * nu / 4) * T_);
+figure; mesh(X_, T_, u_exact);
+xlabel('x'); ylabel('t'); zlabel('u(exact)');
+%% Error
+delta = u_exact - u;
+err = max(abs(delta(:)));
+figure; mesh(X_, T_, u_exact - u);
+xlabel('x'); ylabel('t'); zlabel('\Deltau');
+fprintf('max error = %f\n', err);
+%% Value of Slices
+%%%
+% 
+%   function plotSlice( t_slice, dt, u, u_exact, x_ )
+%       global u u_exact x_
+%       t_slice_id = round(t_slice / dt) + 1;
+%       u_slice_num = u(t_slice_id, :);
+%       u_slice_num = u_slice_num(:);
+%       u_slice_ext = u_exact(t_slice_id, :);
+%       u_slice_ext = u_slice_ext(:);
+%       figure; hold on;
+%       plot(x_, u_slice_num, 'r-', x_, u_slice_ext, 'g-');
+%       legend('numerical', 'analytical');
+%       xlabel('x'); ylabel('u');
+%       u_slice_err = max(abs(u_slice_num  - u_slice_ext));
+%       fprintf('when t = %.2f, max error = %f\n', t_slice, u_slice_err);
+%   end
+%
+%%%
+% $t = 0.06$
+plotSlice( 0.06, dt, u, u_exact, x_ );
+%%%
+% $t = 0.1$
+plotSlice( 0.1, dt, u, u_exact, x_ );
+%%%
+% $t = 0.9$
+plotSlice( 0.9, dt, u, u_exact, x_ );
+##### SOURCE END #####
+--></body></html>

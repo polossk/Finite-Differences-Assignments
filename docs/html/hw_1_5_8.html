@@ -1,0 +1,138 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>HW 1.5.8</title><meta name="generator" content="MATLAB 8.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-09-29"><meta name="DC.source" content="hw_1_5_8.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>HW 1.5.8</h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Eqution</a></li><li><a href="#2">Numerical Solver</a></li><li><a href="#3">Numerical Solution #1</a></li><li><a href="#4">Numerical Solution #2</a></li></ul></div><h2>Eqution<a name="1"></a></h2><div><ul><li><img src="hw_1_5_8_eq14031132338210928882.png" alt="$v_t = \nu v_{xx} + F(x, t), x \in (0, 1), t &gt; 0$"></li><li><img src="hw_1_5_8_eq17281590763160515965.png" alt="$v(x, 0) = f(x), x \in [0, 1]$"></li><li><img src="hw_1_5_8_eq08014539065730575467.png" alt="$v(0, t) = a(t), v(1, t) = b(t), t \geq 0$"></li></ul></div><h2>Numerical Solver<a name="2"></a></h2><pre class="language-matlab">
+<span class="keyword">function</span> [ u, X_, T_ ] = solver_1_5_7( Fxt, a, b, f, M, dt, varargin )
+    <span class="keyword">if</span> (nargin &gt; 6)
+        t = varargin{1};
+    <span class="keyword">else</span>
+        t = 2;
+    <span class="keyword">end</span>
+    nu = 0.1; x = 1;
+    dx = 1 / M;
+    T = round(1 / dt);
+    X = round(1 / dx);
+    N = t * T; t_real = t * dt * T;
+    r = nu * dt / dx / dx;
+    x_ = 0 : dx : x;
+    t_ = 0 : dt : t_real;
+    [X_, T_] = meshgrid(x_, t_);
+    u = zeros(size(X_));
+    u(1, :) = f(x_);
+    u(:, 1) = a(t_);
+    u(:, M + 1) = b(t_);
+    <span class="keyword">for</span> jj = 1 : N
+        <span class="keyword">for</span> kk = 2 : M
+            u(jj + 1, kk) = (1 - 2 * r) * u(jj, kk) <span class="keyword">...</span>
+                + r * (u(jj, kk - 1) + u(jj, kk + 1)) <span class="keyword">...</span>
+                + dt * Fxt(x_(kk), t_(jj));
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+    figure; mesh(X_, T_, u);
+    xlabel(<span class="string">'x'</span>); ylabel(<span class="string">'t'</span>); zlabel(<span class="string">'u(numerical)'</span>);
+    ylim([0 t_real]);
+    plotSlice_1_5_1( 0.1, dt, u, x_ );
+    plotSlice_1_5_1( 0.9, dt, u, x_ );
+    plotSlice_1_5_1( 2.0, dt, u, x_ );
+<span class="keyword">end</span>
+
+</pre><h2>Numerical Solution #1<a name="3"></a></h2><div><ul><li><img src="hw_1_5_8_eq11821617064623711200.png" alt="$a(t) = 10 \sin(t)$"></li><li><img src="hw_1_5_8_eq00246485359083867636.png" alt="$b(t) = 4 \sin(6t)$"></li><li><img src="hw_1_5_8_eq04945412308144523162.png" alt="$f(x) = x(1 - x)$"></li><li><img src="hw_1_5_8_eq06500837958445423647.png" alt="$F(x, t) = \sin(2 \pi x) \sin(4 \pi t)$"></li><li><img src="hw_1_5_8_eq06285030742903215919.png" alt="$M = 10$">, <img src="hw_1_5_8_eq05404380845562989439.png" alt="$dt = 0.05$"></li></ul></div><pre class="codeinput">a_ = @(t)( 10 * sin(t) );
+b_ = @(t)( 4 * sin(6 * t) );
+f_ = @(x)( x .* (1 - x) );
+F_ = @(x, t)( sin(2 * pi * x) * sin(4 * pi * t) );
+solver_1_5_7(F_, a_, b_, f_, 10, 0.05, 2 * pi);
+</pre><img vspace="5" hspace="5" src="hw_1_5_8_01.png" alt=""> <img vspace="5" hspace="5" src="hw_1_5_8_02.png" alt=""> <img vspace="5" hspace="5" src="hw_1_5_8_03.png" alt=""> <img vspace="5" hspace="5" src="hw_1_5_8_04.png" alt=""> <h2>Numerical Solution #2<a name="4"></a></h2><div><ul><li><img src="hw_1_5_8_eq08029086813936042611.png" alt="$M = 20$">, <img src="hw_1_5_8_eq13260123627675474014.png" alt="$dt = 0.01$"></li></ul></div><pre class="codeinput">solver_1_5_7(F_, a_, b_, f_, 20, 0.01, 2 * pi);
+</pre><img vspace="5" hspace="5" src="hw_1_5_8_05.png" alt=""> <img vspace="5" hspace="5" src="hw_1_5_8_06.png" alt=""> <img vspace="5" hspace="5" src="hw_1_5_8_07.png" alt=""> <img vspace="5" hspace="5" src="hw_1_5_8_08.png" alt=""> <p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2015b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% HW 1.5.8
+%% Eqution
+% * $v_t = \nu v_{xx} + F(x, t), x \in (0, 1), t > 0$
+% * $v(x, 0) = f(x), x \in [0, 1]$
+% * $v(0, t) = a(t), v(1, t) = b(t), t \geq 0$
+%% Numerical Solver
+%
+% <include>solver_1_5_7.m</include>
+%
+
+%% Numerical Solution #1
+% * $a(t) = 10 \sin(t)$
+% * $b(t) = 4 \sin(6t)$
+% * $f(x) = x(1 - x)$
+% * $F(x, t) = \sin(2 \pi x) \sin(4 \pi t)$
+% * $M = 10$, $dt = 0.05$
+a_ = @(t)( 10 * sin(t) );
+b_ = @(t)( 4 * sin(6 * t) );
+f_ = @(x)( x .* (1 - x) );
+F_ = @(x, t)( sin(2 * pi * x) * sin(4 * pi * t) );
+solver_1_5_7(F_, a_, b_, f_, 10, 0.05, 2 * pi);
+
+%% Numerical Solution #2
+% * $M = 20$, $dt = 0.01$
+solver_1_5_7(F_, a_, b_, f_, 20, 0.01, 2 * pi);
+##### SOURCE END #####
+--></body></html>
