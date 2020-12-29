@@ -5,7 +5,7 @@
 ![Status](https://img.shields.io/badge/status-complete-brightgreen.svg)
 
 ## Home
-[Matlab Publish](http://bookcode.polossk.com/Finite-Differences-Assignments/)
+[Matlab Publish](https://polossk.github.io/Finite-Differences-Assignments/)
 
 ## Note
 - All Problems come from the book _Numerical Partial Differential Equations: Finite Difference Methods(J.W.Thomas)_.
